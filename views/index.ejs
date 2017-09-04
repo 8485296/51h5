@@ -107,20 +107,28 @@ function init(){
 }
 
   if(isWeiXin()){
+    setTimeout(function() {
+      var head= document.getElementsByTagName('head')[0]; 
+      var script= document.createElement('script'); 
+      script.type= 'text/javascript'; 
+      script.src= 'http://res.wx.qq.com/open/js/jweixin-1.0.0.js'; 
+      head.appendChild(script); 
 
-    var head= document.getElementsByTagName('head')[0]; 
-    var script= document.createElement('script'); 
-    script.type= 'text/javascript'; 
-    script.src= 'http://res.wx.qq.com/open/js/jweixin-1.0.0.js'; 
-    head.appendChild(script); 
-
-    script.onload = function(){
-      document.addEventListener("WeixinJSBridgeReady", function () {
-        var video = document.getElementById('video');
-        video.play();
-      }, false);
-    }
-    
+      script.onload = function(){
+        document.addEventListener("WeixinJSBridgeReady", function () {
+          var video = document.getElementById('video');
+          var gif = document.getElementById('gif');
+          var loading = document.getElementById('loading');
+          var loadingMp3 = document.getElementById('loading-mp3');
+          loading.remove();
+          loadingMp3.pause();
+          video.play();
+          video.onended = function(){
+            alert("wanle")
+          }
+        }, false);
+      }
+    }, 2000);
     
   }else{
     // init();
