@@ -110,10 +110,10 @@ function init(){
   if(isWeiXin()){
     document.addEventListener("WeixinJSBridgeReady", function () {
       var video = document.getElementById('video');
-      $('html').click(function(){
-        alert(222)
+      $('#loading').click(function(){
+        video.play()
+        alert(3)
       })
-      alert('4')
 
     }, false);
     
