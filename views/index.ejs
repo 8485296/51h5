@@ -114,7 +114,10 @@ function init(){
       var loadingMp3 = document.getElementById('loading-mp3');
       loading.remove();
       loadingMp3.pause();
-      video.play();
+      setTimeout(function(){
+        video.play();
+      },1000)
+      
       video.onended = function(){
         alert("wanle")
       }
