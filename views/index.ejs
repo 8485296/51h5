@@ -109,6 +109,7 @@ function init(){
 }
 
   if(isWeiXin()){
+    alert('wex')
     document.addEventListener("WeixinJSBridgeReady", function () {
       var gif = document.getElementById('gif');
       var loading = document.getElementById('loading');
@@ -121,7 +122,7 @@ function init(){
       }, 2000);
     }, false);
   }else{
-    init();
+    // init();
   }
 </script>
 
