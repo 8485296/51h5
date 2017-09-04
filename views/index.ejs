@@ -9,6 +9,8 @@
     @charset "utf-8";html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{background:#000}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}a{text-decoration:inherit}body{-webkit-text-size-adjust:none}html,body{margin:0;padding:0}html{-ms-touch-action:none}a,img,div{-webkit-touch-callout:none}*{-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{-webkit-user-select:none;user-select:none}canvas{position:absolute;margin:0 auto;top:0;left:0;right:0;z-index:6;display:none}video::-webkit-media-controls{display:none!important}video::-webkit-media-controls-fullscreen-button{display:none}video::-webkit-media-controls-play-button{display:none}video::-webkit-media-controls-volume-slider{display:none}video::-webkit-media-controls-mute-button{display:none}video::-webkit-media-controls-timeline{display:none}video::-webkit-media-controls-current-time-display{display:none}video::-webkit-media-controls-time-remaining-display{display:none}video::-webkit-media-controls-toggle-closed-captions-button{display:none}
   </style>
   <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>  
+  <script src="http://51wzn.oss-cn-beijing.aliyuncs.com/fullpage.js"></script>  
+  <link href="http://51wzn.oss-cn-beijing.aliyuncs.com/fullpage.css" rel="stylesheet" type="text/css" />   
   <script>
   $.fn.countTo = function (options) 
 {
@@ -143,12 +145,23 @@
       text-align: center;
     }
     
+    .button{
+      position: absolute;
+      height: 30px;
+      width: 120px;
+      background:url('http://51wzn.oss-cn-beijing.aliyuncs.com/btn_start.png');
+      background-size: contain;
+      top: 50%;
+      left: 50%;
+      margin-left: -50px;
+      margin-top: 25px;
+    }
     #video{
       z-index: 5
     }
     
     #gif{
-      z-index: 1;
+      z-index: 10;
     }
     #gif img{
       height: 100%;
@@ -164,35 +177,42 @@
       height: 100px;
       width: 100px */
     }
+    
   </style>
 </head>
 <body>
-
-  <div id="loading">
-    <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/loading.gif">
-    <div class="countdown" data-time="3" data-value="0">
-
+    <div id="dowebok">
+        <div class="section">
+            <div id="loading">
+                <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/loading.gif">
+                <div class="countdown" data-time="3" data-value="0">
+            
+                </div>
+              </div>
+              <video id="video" preload="auto" x-webkit-airplay="true" webkit-playsinline="true" playsinline="true" style="width: 100%; height: 100%;">
+                    <source id="mp4" src="http://51wzn.oss-cn-beijing.aliyuncs.com/WeChatSight256.mp4" type="video/mp4">
+              </video>
+            
+            
+              <audio id="loading-mp3" autoplay="true" loop="loop" src="http://51wzn.oss-cn-beijing.aliyuncs.com/BGM_loading.mp3"></audio>
+            
+              <div id="gif">
+                <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/%E5%90%AF%E5%8A%A8%E9%A1%B5%E9%9D%A2.gif">
+              </div> 
+              
+              <div id="card">
+              
+              </div>
+            
+              <div id="invitation">
+            
+              </div>
+        </div>
+        <div class="section">
+            <h3>第二屏</h3>
+        </div>
     </div>
-  </div>
-  <video id="video" preload="auto" x-webkit-airplay="true" webkit-playsinline="true" playsinline="true" style="width: 100%; height: 100%;">
-        <source id="mp4" src="http://51wzn.oss-cn-beijing.aliyuncs.com/WeChatSight256.mp4" type="video/mp4">
-  </video>
-
-
-  <audio id="loading-mp3" autoplay="true" loop="loop" src="http://51wzn.oss-cn-beijing.aliyuncs.com/BGM_loading.mp3"></audio>
-
-  <div id="gif">
-    <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/%E5%90%AF%E5%8A%A8%E9%A1%B5%E9%9D%A2.gif">
-  </div> 
-  
-  <div id="card">
-  
-  </div>
-
-  <div id="invitation">
-
-  </div>
-  <script>
+<script>
 
 function isWeiXin(){ 
   var ua = window.navigator.userAgent.toLowerCase(); 
@@ -221,11 +241,13 @@ function removeLoading(){
           $(this).data('to',100);
           $(this).countTo({
             onComplete:function(){
-              $('#loading').html('222222');
+              $('.countdown').remove();
+              $('#loading').append('<div class="button"></button>');
               var video = document.getElementById('video');
               video.onended = function(){
                 $('video').remove();
                 $('#gif').show();
+                $('#dowebok').fullpage();
               }
               $('#loading').click(function(){
                 removeLoading();
