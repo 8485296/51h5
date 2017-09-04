@@ -114,7 +114,8 @@ function isWeiXin(){
 
   if(isWeiXin()){
     document.addEventListener("WeixinJSBridgeReady", function () {
-      init();
+      var video = document.getElementById('video');
+      video.play();
     }, false);
   }else{
     init();
