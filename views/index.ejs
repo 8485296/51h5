@@ -153,6 +153,7 @@
     #gif img{
       height: 100%;
       width: 100%;
+      display: none;
     }
     #invitation{
       
@@ -181,7 +182,7 @@
   <audio id="loading-mp3" autoplay="true" loop="loop" src="http://51wzn.oss-cn-beijing.aliyuncs.com/BGM_loading.mp3"></audio>
 
   <div id="gif">
-    <!-- <img src="" > -->
+    <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/%E5%90%AF%E5%8A%A8%E9%A1%B5%E9%9D%A2.gif">
   </div> 
   
   <div id="card">
@@ -222,6 +223,10 @@ function removeLoading(){
             onComplete:function(){
               $('#loading').html('222222');
               var video = document.getElementById('video');
+              video.onended = function(){
+                $('video').remove();
+                $('#gif').show();
+              }
               $('#loading').click(function(){
                 removeLoading();
                 video.play();
