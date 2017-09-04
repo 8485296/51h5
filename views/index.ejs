@@ -109,13 +109,10 @@ function init(){
   if(isWeiXin()){
     document.addEventListener("WeixinJSBridgeReady", function () {
       var video = document.getElementById('video');
-      video.oncanplay = function(){
-        alert(22)
+      document.body.onclick= function(){
+        video.play();
       }
-      
-      video.onended = function(){
-        alert("wanle")
-      }
+
     }, false);
     
   }else{
