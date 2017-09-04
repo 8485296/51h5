@@ -262,7 +262,31 @@ function removeLoading(){
     }, false);
     
   }else{
-    
+    document.getElementById('loading-mp3').play();
+      document.getElementById('video').play()
+      document.getElementById('video').pause();
+
+      $('.countdown').each(function()
+      {
+          $(this).data('from',0);
+          $(this).data('to',100);
+          $(this).countTo({
+            onComplete:function(){
+              $('.countdown').remove();
+              $('#loading').append('<div class="button"></button>');
+              var video = document.getElementById('video');
+              video.onended = function(){
+                $('video').remove();
+                $('#gif').show();
+                $('#dowebok').fullpage();
+              }
+              $('body').click(function(){
+                removeLoading();
+                video.play();
+              })
+            }
+          });
+      });
   }
 </script>
 
