@@ -109,12 +109,12 @@ function init(){
 }
 
   if(isWeiXin()){
-    setTimeout(function() {
-      document.addEventListener("WeixinJSBridgeReady", function () {
-        var video = document.getElementById('video');
-        video.play();
-      }, false);
-    }, 1000);
+    document.addEventListener("WeixinJSBridgeReady", function () {
+      var video = document.getElementById('video');
+      video.onended = function(){
+        alert("wanle")
+      }
+    }, false);
     
   }else{
     // init();
