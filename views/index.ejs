@@ -97,13 +97,11 @@ function init(){
   var gif = document.getElementById('gif');
   var loading = document.getElementById('loading');
   var loadingMp3 = document.getElementById('loading-mp3');
-  video.oncanplay = function(){
-    setTimeout(function() {
-      loading.remove();
-      loadingMp3.pause();
-      video.play();
-    }, 2000);
-  }
+  setTimeout(function() {
+    loading.remove();
+    loadingMp3.pause();
+    video.play();
+  }, 2000);
   video.onended = function(){
     alert("wanle")
   }
