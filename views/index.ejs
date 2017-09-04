@@ -98,6 +98,13 @@ function isWeiXin(){
   var loading = document.getElementById('loading');
   var loadingMp3 = document.getElementById('loading-mp3');
   video.oncanplay = function(){
+    init();
+  }
+  video.onended = function(){
+
+  }
+
+  function init(){
     setTimeout(function() {
       loading.remove();
       loadingMp3.pause();
@@ -105,20 +112,11 @@ function isWeiXin(){
     }, 2000);
   }
 
-
-  video.onended = function(){
-
-  }
-
-(function(){
   if(isWeiXin()){
     document.addEventListener("WeixinJSBridgeReady", function () {
-      loading.remove();
-      loadingMp3.pause();
-      video.play();
+      init();
     }, false);
   }
-}())
 </script>
 
   <script type="text/javascript" src="http://51wzn.oss-cn-beijing.aliyuncs.com/html2canvas.min.js"></script>
