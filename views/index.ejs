@@ -98,6 +98,7 @@ function isWeiXin(){
   var loading = document.getElementById('loading');
   var loadingMp3 = document.getElementById('loading-mp3');
   video.oncanplay = function(){
+    alert(2)
     window.h5canplay = true;
   }
   video.onended = function(){
