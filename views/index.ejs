@@ -100,6 +100,7 @@ function init(){
   setTimeout(function() {
     loading.remove();
     loadingMp3.pause();
+    var video = document.getElementById('video');
     video.play();
   }, 2000);
   video.onended = function(){
