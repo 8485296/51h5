@@ -109,18 +109,13 @@ function init(){
 }
 
   if(isWeiXin()){
-    alert('wex')
-    document.addEventListener("WeixinJSBridgeReady", function () {
-      var gif = document.getElementById('gif');
-      var loading = document.getElementById('loading');
-      var loadingMp3 = document.getElementById('loading-mp3');
-      setTimeout(function() {
+    setTimeout(function() {
+      document.addEventListener("WeixinJSBridgeReady", function () {
         var video = document.getElementById('video');
         video.play();
-        loading.remove();
-        loadingMp3.pause();
-      }, 2000);
-    }, false);
+      }, false);
+    }, 1000);
+    
   }else{
     // init();
   }
