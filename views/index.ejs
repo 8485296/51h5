@@ -93,7 +93,6 @@ function isWeiXin(){
   } 
 } 
 
-function h5_51_main(){
   var video = document.getElementById('video');
   var gif = document.getElementById('gif');
   var loading = document.getElementById('loading');
@@ -110,13 +109,15 @@ function h5_51_main(){
   video.onended = function(){
 
   }
-}
 
 (function(){
-  document.addEventListener("WeixinJSBridgeReady", function () {
-    h5_51_main();
-  }, false);
-
+  if(isWeiXin()){
+    document.addEventListener("WeixinJSBridgeReady", function () {
+      loading.remove();
+      loadingMp3.pause();
+      video.play();
+    }, false);
+  }
 }())
 </script>
 
