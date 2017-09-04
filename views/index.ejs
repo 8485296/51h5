@@ -99,6 +99,7 @@ function removeLoading(){
 }
   if(isWeiXin()){
     document.addEventListener("WeixinJSBridgeReady", function () {
+      document.getElementById('loading-mp3').play();
       var video = document.getElementById('video');
       $('#loading').click(function(){
         removeLoading();
