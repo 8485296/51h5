@@ -115,14 +115,12 @@ function init(){
     head.appendChild(script); 
 
     script.onload = function(){
-      alert('wanle')
+      document.addEventListener("WeixinJSBridgeReady", function () {
+        var video = document.getElementById('video');
+        video.play();
+      }, false);
     }
-    // document.addEventListener("WeixinJSBridgeReady", function () {
-    //   var video = document.getElementById('video');
-    //   video.onended = function(){
-    //     alert("wanle")
-    //   }
-    // }, false);
+    
     
   }else{
     // init();
