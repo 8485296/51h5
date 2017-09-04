@@ -23,7 +23,16 @@
     }
     #loading{
       z-index: 10;
-      background: #fff;
+      background: #1D1B30;
+    }
+    #loading img{
+      position: absolute;
+      height: 100px;
+      width: 100px;
+      top: 50%;
+      left: 50%;
+      margin-left: -50px;
+      margin-top: -50px;
     }
     
     #video{
@@ -38,24 +47,20 @@
       width: 100%;
     }
     #invitation{
-      background: #abcdef;
-      height: 50px;
-      width: 50px;
-      position: absolute;
-      bottom: 0;
+      
     }
     #card{
-      background: #fff;
+      /* background: #fff;
       position: fixed;
       height: 100px;
-      width: 100px
+      width: 100px */
     }
   </style>
 </head>
 <body>
-<!-- 
-  <div id="loading">
 
+  <div id="loading">
+    <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/loading.gif">
   </div>
   <video id="video" preload="auto" x-webkit-airplay="true" webkit-playsinline="true" playsinline="true" style="width: 100%; height: 100%;">
         <source id="mp4" src="http://51wzn.oss-cn-beijing.aliyuncs.com/WeChatSight256.mp4" type="video/mp4">
@@ -65,11 +70,11 @@
   <audio id="loading-mp3" autoplay="true" loop="loop" src="http://51wzn.oss-cn-beijing.aliyuncs.com/BGM_loading.mp3"></audio>
 
   <div id="gif">
-    <img src="" >
-  </div> -->
-
+    <!-- <img src="" > -->
+  </div> 
+  
   <div id="card">
-    sssss
+  
   </div>
 
   <div id="invitation">
@@ -94,9 +99,11 @@ function h5_51_main(){
   var loading = document.getElementById('loading');
   var loadingMp3 = document.getElementById('loading-mp3');
   video.oncanplay = function(){
-    loading.remove();
-    loadingMp3.pause();
-    // video.play();
+    setTimeout(function() {
+      loading.remove();
+      loadingMp3.pause();
+      video.play();
+    }, 2000);
   }
 
 
@@ -108,10 +115,10 @@ function h5_51_main(){
 (function(){
   if(isWeiXin()){
     document.addEventListener("WeixinJSBridgeReady", function () {
-      // h5_51_main();
+      h5_51_main();
     }, false);
   }else{
-    // h5_51_main();
+      h5_51_main();
   }
 
 }())
@@ -119,7 +126,7 @@ function h5_51_main(){
 
   <script type="text/javascript" src="http://51wzn.oss-cn-beijing.aliyuncs.com/html2canvas.min.js"></script>
 
-  <script>
+  <!-- <script>
   var invitation = document.getElementById('invitation');
   var card = document.getElementById('card');
   html2canvas(invitation, {
@@ -128,6 +135,6 @@ function h5_51_main(){
         image.src = canvas.toDataURL("image/png");
         card.appendChild(image);
     }
-  });</script>
+  });</script> -->
 </body>
 </html>
