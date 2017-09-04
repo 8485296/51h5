@@ -96,8 +96,7 @@ function init(){
   var loading = document.getElementById('loading');
   var loadingMp3 = document.getElementById('loading-mp3');
   setTimeout(function() {
-    loading.remove();
-    loadingMp3.pause();
+    
     video.play();
   }, 2000);
   video.onended = function(){
