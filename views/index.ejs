@@ -10,6 +10,17 @@
   </style>
 </head>
 <body>
-  <video id="video" autoplay="autoplay" src="http://51wzn.oss-cn-beijing.aliyuncs.com/%E6%80%BB-%E5%90%88%E6%88%90.mp4" preload="auto" x-webkit-airplay="true" webkit-playsinline="true" playsinline="true" style="width: 375px; height: 666px;"></video>
+  <video id="video" autoplay="autoplay" preload="none" mediagroup="myVideoGroup" poster="video.png" preload="auto" x-webkit-airplay="true" webkit-playsinline="true" playsinline="true" style="width: 375px; height: 666px;">
+        <source id="mp4" src="http://51wzn.oss-cn-beijing.aliyuncs.com/%E6%80%BB-%E5%90%88%E6%88%90.mp4" type="video/mp4">
+  </video>
+
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script>
+       //一般情况下，这样就可以自动播放了，但是一些奇葩iPhone机不可以
+      //必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效
+      document.addEventListener("WeixinJSBridgeReady", function () {
+          document.getElementById('video').play();
+      }, false);
+  </script>
 </body>
 </html>
