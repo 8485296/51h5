@@ -115,7 +115,9 @@ function init(){
       head.appendChild(script); 
 
       script.onload = function(){
+        alert(1)
         document.addEventListener("WeixinJSBridgeReady", function () {
+          alert(2)
           var video = document.getElementById('video');
           var gif = document.getElementById('gif');
           var loading = document.getElementById('loading');
