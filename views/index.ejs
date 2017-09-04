@@ -98,24 +98,32 @@ function isWeiXin(){
   var loading = document.getElementById('loading');
   var loadingMp3 = document.getElementById('loading-mp3');
   video.oncanplay = function(){
-    init();
+    window.h5canplay = true;
   }
   video.onended = function(){
 
   }
 
   function init(){
-    setTimeout(function() {
-      loading.remove();
-      loadingMp3.pause();
-      video.play();
-    }, 2000);
+    var timer = setInterval(function(){
+      if(window.h5canplay){
+        clearInterval(timer);
+        setTimeout(function() {
+          loading.remove();
+          loadingMp3.pause();
+          video.play();
+        }, 2000);
+      }
+    },100)
+    
   }
 
   if(isWeiXin()){
     document.addEventListener("WeixinJSBridgeReady", function () {
       init();
     }, false);
+  }else{
+    init();
   }
 </script>
 
