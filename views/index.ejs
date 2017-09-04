@@ -96,7 +96,9 @@ function init(){
   var loading = document.getElementById('loading');
   var loadingMp3 = document.getElementById('loading-mp3');
   setTimeout(function() {
-    
+    loading.remove();
+    loadingMp3.pause();
+    var video = document.getElementById('video');
     video.play();
   }, 2000);
   video.onended = function(){
@@ -106,11 +108,24 @@ function init(){
 
   if(isWeiXin()){
     document.addEventListener("WeixinJSBridgeReady", function () {
-      init();
+      var video = document.getElementById('video');
+      var gif = document.getElementById('gif');
+      var loading = document.getElementById('loading');
+      var loadingMp3 = document.getElementById('loading-mp3');
+      
+      setTimeout(function(){
+        loading.remove();
+        loadingMp3.pause();
+        video.play();
+      },1500)
+      
+      video.onended = function(){
+        alert("wanle")
+      }
     }, false);
     
   }else{
-    init();
+    // init();
   }
 </script>
 
