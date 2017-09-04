@@ -107,6 +107,7 @@ function isWeiXin(){
   function init(){
     var timer = setInterval(function(){
       if(window.h5canplay){
+        alert(2)
         clearInterval(timer);
         setTimeout(function() {
           loading.remove();
