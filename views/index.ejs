@@ -171,13 +171,15 @@
     }
     #invitation{
       display: none;
-      background: url('http://51wzn.oss-cn-beijing.aliyuncs.com/yaoqinghan.png');
-      background-size: cover;
+    }
+    #invitation img{
+      height: 100%;
+      width: 100%;
     }
     #invitation,#card img{
       position: absolute;
       z-index: 100;
-      height: 80%;
+      height: 85%;
       width: 90%;
       top:50%;
       left: 50%;
@@ -246,6 +248,7 @@
                 
             </div>
             <div id="invitation">
+                <img src="/images/yaoqinghan.png" >
                 <div id="name">
                   
                 </div>
@@ -256,28 +259,11 @@
         </div>
     </div>
 <script>
-  function audioAutoPlay(id){
-    var audio = document.getElementById(id);
-
-    var play = function() {
-        document.removeEventListener("WeixinJSBridgeReady", play);
-
-        audio.play();
-        audio.pause();
-    };
-    
-    audio.play();
-    audio.pause();
-
-    //weixin
-    document.addEventListener("WeixinJSBridgeReady", play, false);
-
-}
 
 // $('#dowebok').fullpage({
 //                   onLeave:function(index,nextIndex){
 //                     if(nextIndex==2){
-//                       $('#loop-mp3')[0].play();
+//                       document.getElementById('loop-mp3').play();
 //                       $('#name').text(getSearchString('for'))
 //                       setTimeout(function(){
 //                         var invitation = $('#invitation');
@@ -288,7 +274,9 @@
 //                               var image = new Image();
 //                               image.src = canvas.toDataURL("image/png");
 //                               card.appendChild(image);
-//                           }
+//                           },
+//                           allowTaint: true,
+//                     taintTest: false,
 //                         });
 //                       },2500)
 //                     }
@@ -347,10 +335,10 @@ function removeLoading(){
                 $('#card').show();
                 $('video').remove();
                 $('#gif').show();
+                document.getElementById('loop-mp3').play();
                 $('#dowebok').fullpage({
                   onLeave:function(index,nextIndex){
                     if(nextIndex==2){
-                      document.getElementById('loop-mp3').play();
                       $('#name').text(getSearchString('for'))
                       setTimeout(function(){
                         var invitation = $('#invitation');
@@ -361,7 +349,9 @@ function removeLoading(){
                               var image = new Image();
                               image.src = canvas.toDataURL("image/png");
                               card.appendChild(image);
-                          }
+                          },
+                          allowTaint: true,
+                          taintTest: false
                         });
                       },2500)
                     }
@@ -430,6 +420,6 @@ function removeLoading(){
   }
 </script>
 
-  <script type="text/javascript" src="http://51wzn.oss-cn-beijing.aliyuncs.com/html2canvas.min.js"></script>
+  <script type="text/javascript" src="http://51wzn.oss-cn-beijing.aliyuncs.com/html2canvas.js"></script>
 </body>
 </html>
