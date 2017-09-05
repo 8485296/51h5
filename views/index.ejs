@@ -338,24 +338,27 @@ function removeLoading(){
                 document.getElementById('loop-mp3').play();
                 $('#dowebok').fullpage({
                   onLeave:function(index,nextIndex){
-                    if(nextIndex==2){
+                    if(!window.__rendered&&nextIndex==2){
+                      window.__rendered = true;
                       $('#name').text(getSearchString('for'))
                       setTimeout(function(){
                         var invitation = $('#invitation');
                         $("#cover").show();
                         invitation.animate({
                           'top':'50%'
+                        },function(){
+                          var card = document.getElementById('card');
+                          html2canvas(invitation[0], {
+                            onrendered: function(canvas) {
+                                var image = new Image();
+                                image.src = canvas.toDataURL("image/png");
+                                card.appendChild(image);
+                            },
+                            allowTaint: true,
+                            taintTest: false
+                          });
                         });
-                        var card = document.getElementById('card');
-                        html2canvas(invitation[0], {
-                          onrendered: function(canvas) {
-                              var image = new Image();
-                              image.src = canvas.toDataURL("image/png");
-                              card.appendChild(image);
-                          },
-                          allowTaint: true,
-                          taintTest: false
-                        });
+                        
                       },1000)
                     }
                   }
