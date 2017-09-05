@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>51信用卡五周年庆</title>
+  
+      <style>
+          #button{
+              height: 20px;
+              width: 100px;
+              font: 18px;
+              color:#000;
+          }
+
+          #url{
+              color:#000;
+              font-size: 40px;
+          }
+      </style>
+  <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>  
+</head>
+<body>
+    <script>
+        function getUrl(){
+            var val = $('#input').val();encodeURIComponent
+            $('#url').text('http://wetist.com?for='+encodeURIComponent(val));
+        }
+    </script>
+
+    <input type="text" id="input" >
+    <div id="button" onclick="getUrl();">生成url</div>
+    <div id="url"></div>
+</body>
+</html>
