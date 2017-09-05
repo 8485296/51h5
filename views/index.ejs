@@ -235,7 +235,7 @@
             
             
               <audio id="loading-mp3" autoplay="true" loop="loop" src="http://51wzn.oss-cn-beijing.aliyuncs.com/BGM_loading.mp3"></audio>
-              <audio id="loop-mp3" loop="loop" src="http://51wzn.oss-cn-beijing.aliyuncs.com/BGM_loop.mp3"></audio>
+              <audio id="loop-mp3" autoplay="true" loop="loop" src="http://51wzn.oss-cn-beijing.aliyuncs.com/BGM_loop.mp3"></audio>
               
               <div id="gif">
                 <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/todown.gif">
@@ -256,6 +256,7 @@
         </div>
     </div>
 <script>
+  document.getElementById('loading-mp3').pause();
 // $('#dowebok').fullpage({
 //                   onLeave:function(index,nextIndex){
 //                     if(nextIndex==2){
@@ -374,9 +375,29 @@ function removeLoading(){
             $('#loading').append('<div class="button"></button>');
             var video = document.getElementById('video');
             video.onended = function(){
+              $('#card').show();
               $('video').remove();
               $('#gif').show();
-              $('#dowebok').fullpage();
+              $('#dowebok').fullpage({
+                onLeave:function(index,nextIndex){
+                  if(nextIndex==2){
+                    document.getElementById('loop-mp3').play();
+                    $('#name').text(getSearchString('for'))
+                    setTimeout(function(){
+                      var invitation = $('#invitation');
+                      invitation.show();
+                      var card = document.getElementById('card');
+                      html2canvas(invitation[0], {
+                        onrendered: function(canvas) {
+                            var image = new Image();
+                            image.src = canvas.toDataURL("image/png");
+                            card.appendChild(image);
+                        }
+                      });
+                    },2500)
+                  }
+                }
+              });
             }
             $('#loading').click(function(){
               removeLoading();
