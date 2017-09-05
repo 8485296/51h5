@@ -157,7 +157,7 @@
       top: 50%;
       left: 50%;
       margin-left: -50px;
-      margin-top: 25px;
+      margin-top: -15px;
       font-size: 20px;
       color:#131021;
       text-align: center;
@@ -365,6 +365,8 @@ function removeLoading(){
                                 image.src = canvas.toDataURL("image/png");
                                 card.appendChild(image);
                             },
+                            width: invitation.height()*3,
+                            height: invitation.height()*3,
                             allowTaint: true,
                             taintTest: false
                           });
@@ -386,20 +388,60 @@ function removeLoading(){
     
   }else{
     document.getElementById('loading-mp3').play();
-      document.getElementById('video').play()
-      document.getElementById('video').pause();
-      document.getElementById('loop-mp3').play();
-      document.getElementById('loop-mp3').pause();
+    document.getElementById('video').play()
+    document.getElementById('video').pause();
+    document.getElementById('loop-mp3').play();
+    document.getElementById('loop-mp3').pause();
 
-      $('.countdown').each(function()
-      {
-          $(this).data('from',0);
-          $(this).data('to',100);
-          $(this).countTo({
-            onComplete:function(){
+    $('.countdown').each(function()
+    {
+        $(this).data('from',0);
+        $(this).data('to',100);
+        $(this).countTo({
+          onComplete:function(){
+            $('.countdown').remove();
+            $('#loading').append('<div class="button"></button>');
+            var video = document.getElementById('video');
+            video.onended = function(){
+              $('#card').show();
+              $('video').remove();
+              $('#gif').show();
+              document.getElementById('loop-mp3').play();
+              $('#dowebok').fullpage({
+                onLeave:function(index,nextIndex){
+                  if(!window.__rendered&&nextIndex==2){
+                    window.__rendered = true;
+                    $('#name').text(getSearchString('for'))
+                    setTimeout(function(){
+                      var invitation = $('#invitation');
+                      $("#cover").show();
+                      invitation.animate({
+                        'top':'50%'
+                      },function(){
+                        var card = document.getElementById('card');
+                        html2canvas(invitation[0], {
+                          onrendered: function(canvas) {
+                              var image = new Image();
+                              image.src = canvas.toDataURL("image/png");
+                              card.appendChild(image);
+                          },
+                          width: invitation.height()*3,
+                          height: invitation.height()*3,
+                          allowTaint: true,
+                          taintTest: false
+                        });
+                      });
+                      
+                    },1000)
+                  }
+                }
+              });
             }
-          });
-      });
+            removeLoading();
+            video.play();
+          }
+        });
+    });
   }
 </script>
 
