@@ -122,7 +122,7 @@
     }
     #loading{
       z-index: 10;
-      background: #1D1B30;
+      background: #ffc515;
     }
     #loading img{
       position: absolute;
@@ -143,8 +143,9 @@
       margin-left: -50px;
       margin-top: 25px;
       font-size: 20px;
-      color:#ffc515;
+      color:#131021;
       text-align: center;
+      font-family: "Georgia";
     }
     
     .button{
@@ -169,9 +170,7 @@
       height: 100%;
       width: 100%;
     }
-    #invitation{
-      display: none;
-    }
+    
     #invitation img{
       height: 100%;
       width: 100%;
@@ -184,6 +183,8 @@
       top:50%;
       left: 50%;
       transform: translate(-50%,-50%);
+    }#invitation{
+      top:200%;
     }
     #card{
       background: url('http://51wzn.oss-cn-beijing.aliyuncs.com/popyaoqing.png') no-repeat;
@@ -219,6 +220,20 @@
       margin-left: -76px;
       background: url(http://51wzn.oss-cn-beijing.aliyuncs.com/btn_save.png);
       background-size: cover;
+      z-index: 100;
+    }
+    #cover{
+      background:#000;
+      opacity: 0.4;
+      z-index: 90;
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
     }
   </style>
 </head>
@@ -226,7 +241,7 @@
     <div id="dowebok">
         <div class="section">
             <div id="loading">
-                <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/loading.gif">
+                <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/loading_new.gif">
                 <div class="countdown" data-time="3" data-value="0">
             
                 </div>
@@ -256,32 +271,34 @@
             <div id="bt">
 
             </div>
+            <div id="cover"></div>
         </div>
     </div>
 <script>
 
-// $('#dowebok').fullpage({
-//                   onLeave:function(index,nextIndex){
-//                     if(nextIndex==2){
-//                       document.getElementById('loop-mp3').play();
-//                       $('#name').text(getSearchString('for'))
-//                       setTimeout(function(){
-//                         var invitation = $('#invitation');
-//                         invitation.show();
-//                         var card = document.getElementById('card');
-//                         html2canvas(invitation[0], {
-//                           onrendered: function(canvas) {
-//                               var image = new Image();
-//                               image.src = canvas.toDataURL("image/png");
-//                               card.appendChild(image);
-//                           },
-//                           allowTaint: true,
-//                     taintTest: false,
-//                         });
-//                       },2500)
-//                     }
-//                   }
-//                 });
+$('#dowebok').fullpage({
+  onLeave:function(index,nextIndex){
+    if(nextIndex==2){
+      $('#name').text(getSearchString('for'))
+      setTimeout(function(){
+        var invitation = $('#invitation');
+        invitation.animate({
+          'top':'50%'
+        });
+        var card = document.getElementById('card');
+        html2canvas(invitation[0], {
+          onrendered: function(canvas) {
+              var image = new Image();
+              image.src = canvas.toDataURL("image/png");
+              card.appendChild(image);
+          },
+          allowTaint: true,
+          taintTest: false
+        });
+      },1000)
+    }
+  }
+});
 function getSearchString(key) {
      // 获取URL中?之后的字符
       var str = location.search;
@@ -342,7 +359,8 @@ function removeLoading(){
                       $('#name').text(getSearchString('for'))
                       setTimeout(function(){
                         var invitation = $('#invitation');
-                        invitation.show();
+                        $("#cover").show();
+                        invitation.animate('top','50%');
                         var card = document.getElementById('card');
                         html2canvas(invitation[0], {
                           onrendered: function(canvas) {
@@ -353,7 +371,7 @@ function removeLoading(){
                           allowTaint: true,
                           taintTest: false
                         });
-                      },2500)
+                      },1000)
                     }
                   }
                 });
