@@ -221,6 +221,7 @@
       background: url(http://51wzn.oss-cn-beijing.aliyuncs.com/btn_save.png);
       background-size: cover;
       z-index: 100;
+      display: none;
     }
     #cover{
       background:#000;
@@ -387,6 +388,7 @@ function removeLoading(){
                   if(nextIndex==2){
                     document.getElementById('loop-mp3').play();
                     $('#name').text(getSearchString('for'))
+                    $('#bt').show();
                     setTimeout(function(){
                       var invitation = $('#invitation');
                       invitation.show();
