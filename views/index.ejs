@@ -200,7 +200,7 @@
     }
     #name{
       position: absolute;
-      top: 40%;
+      top: 41%;
       color: #333;
       left: 50%;
       margin-left: -50px;
@@ -256,26 +256,26 @@
         </div>
     </div>
 <script>
-$('#dowebok').fullpage({
-                  onLeave:function(index,nextIndex){
-                    if(nextIndex==2){
-                      $('#loop-mp3')[0].play();
-                      $('#name').text(getSearchString('for'))
-                      setTimeout(function(){
-                        var invitation = $('#invitation');
-                        invitation.show();
-                        var card = document.getElementById('card');
-                        html2canvas(invitation[0], {
-                          onrendered: function(canvas) {
-                              var image = new Image();
-                              image.src = canvas.toDataURL("image/png");
-                              card.appendChild(image);
-                          }
-                        });
-                      },2500)
-                    }
-                  }
-                });
+// $('#dowebok').fullpage({
+//                   onLeave:function(index,nextIndex){
+//                     if(nextIndex==2){
+//                       $('#loop-mp3')[0].play();
+//                       $('#name').text(getSearchString('for'))
+//                       setTimeout(function(){
+//                         var invitation = $('#invitation');
+//                         invitation.show();
+//                         var card = document.getElementById('card');
+//                         html2canvas(invitation[0], {
+//                           onrendered: function(canvas) {
+//                               var image = new Image();
+//                               image.src = canvas.toDataURL("image/png");
+//                               card.appendChild(image);
+//                           }
+//                         });
+//                       },2500)
+//                     }
+//                   }
+//                 });
 function getSearchString(key) {
      // 获取URL中?之后的字符
       var str = location.search;
