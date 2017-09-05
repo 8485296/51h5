@@ -423,6 +423,8 @@ function removeLoading(){
                               image.src = canvas.toDataURL("image/png");
                               card.appendChild(image);
                           },
+                          width: invitation.height()*2,
+                          height: invitation.width()*2,
                           allowTaint: true,
                           taintTest: false
                         });
