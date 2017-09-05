@@ -276,29 +276,6 @@
     </div>
 <script>
 
-$('#dowebok').fullpage({
-  onLeave:function(index,nextIndex){
-    if(nextIndex==2){
-      $('#name').text(getSearchString('for'))
-      setTimeout(function(){
-        var invitation = $('#invitation');
-        invitation.animate({
-          'top':'50%'
-        });
-        var card = document.getElementById('card');
-        html2canvas(invitation[0], {
-          onrendered: function(canvas) {
-              var image = new Image();
-              image.src = canvas.toDataURL("image/png");
-              card.appendChild(image);
-          },
-          allowTaint: true,
-          taintTest: false
-        });
-      },1000)
-    }
-  }
-});
 function getSearchString(key) {
      // 获取URL中?之后的字符
       var str = location.search;
@@ -360,7 +337,9 @@ function removeLoading(){
                       setTimeout(function(){
                         var invitation = $('#invitation');
                         $("#cover").show();
-                        invitation.animate('top','50%');
+                        invitation.animate({
+                          'top':'50%'
+                        });
                         var card = document.getElementById('card');
                         html2canvas(invitation[0], {
                           onrendered: function(canvas) {
