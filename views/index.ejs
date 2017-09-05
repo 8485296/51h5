@@ -208,6 +208,16 @@
       width: 100px;
       font-size: 20px;
     }
+    #bt{
+      position: absolute;
+      bottom: 25px;
+      width: 154px;
+      height: 35px;
+      left: 50%;
+      margin-left: -76px;
+      background: url(http://51wzn.oss-cn-beijing.aliyuncs.com/btn_save.png);
+      background-size: cover;
+    }
   </style>
 </head>
 <body>
@@ -240,10 +250,32 @@
                   
                 </div>
             </div>
+            <div id="bt">
+
+            </div>
         </div>
     </div>
 <script>
-
+$('#dowebok').fullpage({
+                  onLeave:function(index,nextIndex){
+                    if(nextIndex==2){
+                      $('#loop-mp3')[0].play();
+                      $('#name').text(getSearchString('for'))
+                      setTimeout(function(){
+                        var invitation = $('#invitation');
+                        invitation.show();
+                        var card = document.getElementById('card');
+                        html2canvas(invitation[0], {
+                          onrendered: function(canvas) {
+                              var image = new Image();
+                              image.src = canvas.toDataURL("image/png");
+                              card.appendChild(image);
+                          }
+                        });
+                      },2500)
+                    }
+                  }
+                });
 function getSearchString(key) {
      // 获取URL中?之后的字符
       var str = location.search;
