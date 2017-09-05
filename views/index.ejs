@@ -411,7 +411,9 @@ function removeLoading(){
                             var image = new Image();
                             image.src = canvas.toDataURL("image/png");
                             card.appendChild(image);
-                        }
+                        },
+                        allowTaint: true,
+                        taintTest: false
                       });
                     },2500)
                   }
