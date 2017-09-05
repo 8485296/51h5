@@ -201,6 +201,7 @@
       transform: translate(-50%,-50%);
     }#invitation{
       top:200%;
+      display: none;
     }
     #card{
       background: url('http://51wzn.oss-cn-beijing.aliyuncs.com/popyaoqing.png') no-repeat;
@@ -355,7 +356,7 @@ function removeLoading(){
                       setTimeout(function(){
                         var invitation = $('#invitation');
                         $("#cover").show();
-                        invitation.animate({
+                        invitation.show().animate({
                           'top':'50%'
                         },function(){
                           var card = document.getElementById('card');
