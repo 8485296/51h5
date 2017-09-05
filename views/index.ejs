@@ -235,7 +235,7 @@
             
             
               <audio id="loading-mp3" autoplay="true" loop="loop" src="http://51wzn.oss-cn-beijing.aliyuncs.com/BGM_loading.mp3"></audio>
-              <audio id="loop-mp3" autoplay="true" loop="loop" src="http://51wzn.oss-cn-beijing.aliyuncs.com/BGM_loop.mp3"></audio>
+              <audio id="loop-mp3" loop="loop" src="http://51wzn.oss-cn-beijing.aliyuncs.com/BGM_loop.mp3"></audio>
               
               <div id="gif">
                 <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/todown.gif">
@@ -256,7 +256,24 @@
         </div>
     </div>
 <script>
-  document.getElementById('loading-mp3').pause();
+  function audioAutoPlay(id){
+    var audio = document.getElementById(id);
+
+    var play = function() {
+        document.removeEventListener("WeixinJSBridgeReady", play);
+
+        audio.play();
+        audio.pause();
+    };
+    
+    audio.play();
+    audio.pause();
+
+    //weixin
+    document.addEventListener("WeixinJSBridgeReady", play, false);
+
+}
+
 // $('#dowebok').fullpage({
 //                   onLeave:function(index,nextIndex){
 //                     if(nextIndex==2){
@@ -331,7 +348,7 @@ function removeLoading(){
                 $('#dowebok').fullpage({
                   onLeave:function(index,nextIndex){
                     if(nextIndex==2){
-                      document.getElementById('loop-mp3').play();
+                      audioAutoPlay('loop-mp3')
                       $('#name').text(getSearchString('for'))
                       setTimeout(function(){
                         var invitation = $('#invitation');
