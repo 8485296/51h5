@@ -307,7 +307,7 @@
                 
             </div>
             <div id="invitation">
-                <img src="/images/yaoqinghan.png" >
+                <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/yaoqinghan.png" >
                 <div id="name">
                   
                 </div>
@@ -353,8 +353,8 @@ function removeLoading(){
 }
   if(isWeiXin()){
     document.addEventListener("WeixinJSBridgeReady", function () {
-      
-      document.getElementById('loading-mp3').play();
+      $(function(){ 
+        document.getElementById('loading-mp3').play();
       document.getElementById('video').play()
       document.getElementById('video').pause();
       document.getElementById('loop-mp3').play();
@@ -409,6 +409,8 @@ function removeLoading(){
             }
           });
       });
+      }); 
+      
 
       
     }, false);
