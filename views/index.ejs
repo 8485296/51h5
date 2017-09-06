@@ -25,7 +25,9 @@
       app: 'rp' // 目前只支持走人品公众号，管家的接口有问题，其他可配置项和官方api相同
                 // jsapilist默认会注册 ["onMenuShareTimeline", "onMenuShareAppMessage"] ， 如需新增可覆盖
     }, function (err, wx) {
+    
         if (!err) {
+            alert('test')
             // wx 对象即官方文档上面的对象，可调用其方法
             wx.onMenuShareAppMessage({
                 title: '51信用卡五周年', // 分享标题
@@ -39,6 +41,8 @@
               link: 'http://www.wetist.com', // 分享链接
               imgUrl: 'http://51wzn.oss-cn-beijing.aliyuncs.com/favicon.png', // 分享图标
           });
+        }else{
+          alert(JSON.stringify(err))
         }
     })
     
