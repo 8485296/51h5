@@ -22,18 +22,23 @@
   }
     #button{
         height: 50px;
-        width: 130px;
+        width: 160px;
         position: absolute;
         top: 53%;
         left: 50%;
-        margin-left: -65px;
-    
+        margin-left: -80px;
+        text-align: center;
+        color: #fff;
+        background:#444;
+        font-size: 25px;
+        line-height: 50px;
+        border-radius: 5px;
     }
 
     body{
         height: 100%;
         width: 100%;
-        background: url('http://51wzn.oss-cn-beijing.aliyuncs.com/admin.png');
+        background: url('http://51wzn.oss-cn-beijing.aliyuncs.com/admin2.png');
         background-size: cover;
     }
 </style>
@@ -45,11 +50,13 @@
     <script>
         function getUrl(){
             var val = $('#input').val();
-
+            if(!val){
+                alert('请输入需要邀请的人,并点击生成按钮');
+            }
             U51Wechat.init({
                 app: 'rp'         // jsapilist默认会注册 ["onMenuShareTimeline", "onMenuShareAppMessage"] ， 如需新增可覆盖
                 }, function (err, wx) {
-                
+                    
                     if (!err) {
                         // wx 对象即官方文档上面的对象，可调用其方法
                         wx.onMenuShareAppMessage({
@@ -59,13 +66,15 @@
                             imgUrl: 'http://51wzn.oss-cn-beijing.aliyuncs.com/WechatIMG1398.jpeg', // 分享图标
                         });
 
-                        alert('点击右上角分享')
+                        alert(val+'的邀请函已经生成,点击右上角分享给他');
                     }
                 })
         }
     </script>
 
     <input type="text" id="input" >
-    <div id="button" onclick="getUrl();"></div>
+    <div id="button" onclick="getUrl();">
+        生成邀请函
+    </div>
 </body>
 </html>
