@@ -9,12 +9,30 @@
   
   <style type="text/css">
   #input{
-      margin-top: 100px;
+    margin-top: 100px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    height: 33px;
+    width: 200px;
+    margin-left: -100px;
+    background: #ffc800;
   }
     #button{
-        height: 20px;
-        width: 100px;
-        border: 1px solid black;
+        height: 40px;
+        width: 130px;
+        position: absolute;
+        top: 51%;
+        left: 50%;
+        margin-left: -65px;
+    
+    }
+
+    body{
+        height: 100%;
+        width: 100%;
+        background: url('http://51wzn.oss-cn-beijing.aliyuncs.com/admin.png');
+        background-size: cover;
     }
 </style>
   <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>  
@@ -24,7 +42,7 @@
 <body>
     <script>
         function getUrl(){
-            var val = $('#input').val();encodeURIComponent
+            var val = $('#input').val();
 
             U51Wechat.init({
                 app: 'rp'         // jsapilist默认会注册 ["onMenuShareTimeline", "onMenuShareAppMessage"] ， 如需新增可覆盖
@@ -46,6 +64,6 @@
     </script>
 
     <input type="text" id="input" >
-    <div id="button" onclick="getUrl();">生成url</div>
+    <div id="button" onclick="getUrl();"></div>
 </body>
 </html>
