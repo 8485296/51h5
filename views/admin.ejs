@@ -45,7 +45,7 @@
             // wx 对象即官方文档上面的对象，可调用其方法
             wx.onMenuShareAppMessage({
                 title: '51信用卡五周年邀请函', // 分享标题
-                desc: '侠客孙氏，诚邀阁下亲临51信用卡五周年庆典', // 分享描述
+                desc: '侠客孙氏，诚邀'+getSearchString('for')+'亲临51信用卡五周年庆典', // 分享描述
                 link: location.href, // 分享链接
                 imgUrl: 'http://51wzn.oss-cn-beijing.aliyuncs.com/WechatIMG1398.jpeg', // 分享图标
             });
@@ -331,7 +331,7 @@
                 
             </div>
             <div id="invitation">
-                <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/yaoqinghan.png" >
+                <img src="http://51wzn.oss-cn-beijing.aliyuncs.com/yaoqinghanhong.png" >
                 <div id="name">
                   
                 </div>
