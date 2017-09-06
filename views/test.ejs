@@ -47,11 +47,18 @@
   
 </head>
 <body>
+    
+
+    <input type="text" id="input" >
+    <div id="button" onclick="getUrl();">
+        生成邀请函
+    </div>
+
     <script>
-        function getUrl(){
+        $("#button").click(function(){
             var val = $('#input').val();
             if(!val){
-                alert('请输入需要邀请的人,并点击生成按钮');
+                return alert('请输入需要邀请的人,并点击生成按钮');
             }
             U51Wechat.init({
                 app: 'rp'         // jsapilist默认会注册 ["onMenuShareTimeline", "onMenuShareAppMessage"] ， 如需新增可覆盖
@@ -67,14 +74,11 @@
                         });
 
                         alert(val+'的邀请函已经生成,点击右上角分享给他');
+                    }else{
+                        alert(err)
                     }
                 })
-        }
+        })
     </script>
-
-    <input type="text" id="input" >
-    <div id="button" onclick="getUrl();">
-        生成邀请函
-    </div>
 </body>
 </html>
