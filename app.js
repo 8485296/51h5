@@ -26,6 +26,8 @@ app.use(app.router);
 app.get('/', routes.index);
 
 app.get('/admin', routes.admin);
+app.get('/MP_verify_LSPXNggdwg6NAn0e.txt', routes.text);
+
 app.get('/users', users.list);
 
 /// catch 404 and forwarding to error handler
