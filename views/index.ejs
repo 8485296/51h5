@@ -20,6 +20,23 @@
   
   <link href="http://51wzn.oss-cn-beijing.aliyuncs.com/fullpage.css" rel="stylesheet" type="text/css" />   
   <script>
+    function getSearchString(key) {
+     // 获取URL中?之后的字符
+      var str = location.search;
+      str = str.substring(1,str.length);
+      
+      // 以&分隔字符串，获得类似name=xiaoli这样的元素数组
+      var arr = str.split("&");
+      var obj = new Object();
+      
+     // 将每一个数组元素以=分隔并赋给obj对象
+     for(var i = 0; i < arr.length; i++) {
+         var tmp_arr = arr[i].split("=");
+         obj[decodeURIComponent(tmp_arr[0])] = decodeURIComponent(tmp_arr[1]);
+     }
+     return obj[key];
+ }
+
     U51Wechat.init({
       app: 'rp'         // jsapilist默认会注册 ["onMenuShareTimeline", "onMenuShareAppMessage"] ， 如需新增可覆盖
     }, function (err, wx) {
@@ -29,13 +46,13 @@
             wx.onMenuShareAppMessage({
                 title: '51信用卡五周年邀请函', // 分享标题
                 desc: '侠客孙氏，诚邀阁下亲临51信用卡五周年庆典', // 分享描述
-                link: 'http://www.wetist.com', // 分享链接
+                link: 'http://www.wetist.com?for='+getSearchString('for'), // 分享链接
                 imgUrl: 'http://51wzn.oss-cn-beijing.aliyuncs.com/WechatIMG1398.jpeg', // 分享图标
             });
 
             wx.onMenuShareTimeline({
               title: '51信用卡五周年邀请函', // 分享标题
-              link: 'http://www.wetist.com', // 分享链接
+              link: 'http://www.wetist.com?for='+getSearchString('for'), // 分享链接
               imgUrl: 'http://51wzn.oss-cn-beijing.aliyuncs.com/WechatIMG1398.jpeg', // 分享图标
           });
         }else{
@@ -321,22 +338,6 @@
     </div>
 <script>
 
-function getSearchString(key) {
-     // 获取URL中?之后的字符
-      var str = location.search;
-      str = str.substring(1,str.length);
-      
-      // 以&分隔字符串，获得类似name=xiaoli这样的元素数组
-      var arr = str.split("&");
-      var obj = new Object();
-      
-     // 将每一个数组元素以=分隔并赋给obj对象
-     for(var i = 0; i < arr.length; i++) {
-         var tmp_arr = arr[i].split("=");
-         obj[decodeURIComponent(tmp_arr[0])] = decodeURIComponent(tmp_arr[1]);
-     }
-     return obj[key];
- }
 
 function isWeiXin(){ 
   var ua = window.navigator.userAgent.toLowerCase(); 
