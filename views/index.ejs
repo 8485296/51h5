@@ -27,14 +27,14 @@
         if (!err) {
             // wx 对象即官方文档上面的对象，可调用其方法
             wx.onMenuShareAppMessage({
-                title: '侠客孙氏，诚邀阁下亲临51信用卡五周年庆典', // 分享标题
-                desc: '9月12日18：00 杭州 约么？', // 分享描述
+                title: '51信用卡五周年邀请函', // 分享标题
+                desc: '侠客孙氏，诚邀阁下亲临51信用卡五周年庆典', // 分享描述
                 link: 'http://www.wetist.com', // 分享链接
                 imgUrl: 'http://51wzn.oss-cn-beijing.aliyuncs.com/WechatIMG1398.jpeg', // 分享图标
             });
 
             wx.onMenuShareTimeline({
-              title: '侠客孙氏，诚邀阁下亲临51信用卡五周年庆典', // 分享标题
+              title: '51信用卡五周年邀请函', // 分享标题
               link: 'http://www.wetist.com', // 分享链接
               imgUrl: 'http://51wzn.oss-cn-beijing.aliyuncs.com/WechatIMG1398.jpeg', // 分享图标
           });
@@ -291,7 +291,8 @@
             
                 </div>
               </div>
-              <video id="video" preload="auto" x-webkit-airplay="true" webkit-playsinline="true" playsinline="true" style="width: 100%; height: 100%;">
+              
+              <video id="video" preload="auto" x-webkit-airplay="true" webkit-playsinline="true" playsinline="true" style="width: 100%; height: 100%;" x5-video-player-type='h5' x5-video-player-fullscreen="true">
                     <source id="mp4" src="http://51wzn.oss-cn-beijing.aliyuncs.com/%E6%80%BB-%E5%90%88%E6%88%90.mp4" type="video/mp4">
               </video>
             
@@ -353,7 +354,16 @@ function removeLoading(){
 }
   if(isWeiXin()){
     document.addEventListener("WeixinJSBridgeReady", function () {
-      $(function(){ 
+      $(function(){
+
+        $(window).resize(function(){
+            var windowWidth=$(window).innerWidth();
+            var windowHeight=$(window).innerHeight();
+            $('#video').css({
+                width:windowWidth,
+                height:windowHeight
+            })
+        }) 
         try{
           document.getElementById('loading-mp3').play();
           document.getElementById('video').play()
