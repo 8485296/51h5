@@ -27,14 +27,14 @@
         if (!err) {
             // wx 对象即官方文档上面的对象，可调用其方法
             wx.onMenuShareAppMessage({
-                title: '51信用卡五周年邀请函', // 分享标题
-                desc: '侠客孙氏，诚邀阁下亲临51信用卡五周年庆典', // 分享描述
+                title: '侠客孙氏，诚邀阁下亲临51信用卡五周年庆典', // 分享标题
+                desc: '9月12日18：00 杭州 约么？', // 分享描述
                 link: 'http://www.wetist.com', // 分享链接
                 imgUrl: 'http://51wzn.oss-cn-beijing.aliyuncs.com/WechatIMG1398.jpeg', // 分享图标
             });
 
             wx.onMenuShareTimeline({
-              title: '51信用卡五周年邀请函', // 分享标题
+              title: '侠客孙氏，诚邀阁下亲临51信用卡五周年庆典', // 分享标题
               link: 'http://www.wetist.com', // 分享链接
               imgUrl: 'http://51wzn.oss-cn-beijing.aliyuncs.com/WechatIMG1398.jpeg', // 分享图标
           });
@@ -354,11 +354,16 @@ function removeLoading(){
   if(isWeiXin()){
     document.addEventListener("WeixinJSBridgeReady", function () {
       $(function(){ 
-        document.getElementById('loading-mp3').play();
-      document.getElementById('video').play()
-      document.getElementById('video').pause();
-      document.getElementById('loop-mp3').play();
-      document.getElementById('loop-mp3').pause();
+        try{
+          document.getElementById('loading-mp3').play();
+          document.getElementById('video').play()
+          document.getElementById('video').pause();
+          document.getElementById('loop-mp3').play();
+          document.getElementById('loop-mp3').pause();
+        }catch(e){
+
+        }
+        
 
       $('.countdown').each(function()
       {
