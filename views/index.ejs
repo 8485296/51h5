@@ -309,9 +309,15 @@
                 </div>
               </div>
               
-              <video autoplay="autoplay" id="video" preload="auto" x-webkit-airplay="true" webkit-playsinline="true" playsinline="true" style="width: 100%; height: 100%;" x5-video-player-type='h5' x5-video-player-fullscreen="true">
+              <video autoplay="autoplay" id="video" preload="auto" x-webkit-airplay="true" webkit-playsinline="true" playsinline="true" style="width: 100%; height: 100%;"  x5-video-player-fullscreen="true">
                     <source id="mp4" src="http://51wzn.oss-cn-beijing.aliyuncs.com/%E6%80%BB-%E5%90%88%E6%88%90.mp4" type="video/mp4">
               </video>
+              <script>
+                var ua = window.navigator.userAgent.toLowerCase(); 
+                if(!ua.indexOf('huawei')==-1){ 
+                  $('#video').attr('x5-video-player-type','h5');
+                }
+              </script>
             
               <audio id="loading-mp3" autoplay="true" loop="loop" src="http://51wzn.oss-cn-beijing.aliyuncs.com/BGM_loading.mp3"></audio>
               <audio id="loop-mp3" autoplay="true" loop="loop" src="http://51wzn.oss-cn-beijing.aliyuncs.com/BGM_loop.mp3"></audio>
