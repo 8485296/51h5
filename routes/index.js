@@ -13,3 +13,10 @@ exports.admin = function(req, res){
 exports.text = function(req, res){
   res.send('LSPXNggdwg6NAn0e');
 };
+
+
+exports.text2 = function(req, res){
+  res.send('MneiRleI4VNAXLk1');
+};
+
+

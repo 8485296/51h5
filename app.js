@@ -27,6 +27,7 @@ app.get('/', routes.index);
 
 app.get('/admin', routes.admin);
 app.get('/MP_verify_LSPXNggdwg6NAn0e.txt', routes.text);
+app.get('/MP_verify_MneiRleI4VNAXLk1.txt', routes.text2);
 
 app.get('/users', users.list);
 
