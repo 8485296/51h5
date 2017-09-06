@@ -432,61 +432,77 @@ function removeLoading(){
     }, false);
     
   }else{
-    document.getElementById('loading-mp3').play();
-    document.getElementById('video').play()
-    document.getElementById('video').pause();
-    document.getElementById('loop-mp3').play();
-    document.getElementById('loop-mp3').pause();
+    $(function(){
 
-    $('.countdown').each(function()
-    {
-        $(this).data('from',0);
-        $(this).data('to',100);
-        $(this).countTo({
-          onComplete:function(){
-            $('.countdown').remove();
-            $('#loading').append('<div class="button"></button>');
-            var video = document.getElementById('video');
-            video.onended = function(){
-              $('#card').show();
-              $('video').remove();
-              $('#gif').show();
-              document.getElementById('loop-mp3').play();
-              $('#dowebok').fullpage({
-                onLeave:function(index,nextIndex){
-                  if(!window.__rendered&&nextIndex==2){
-                    window.__rendered = true;
-                    $('#name').text(getSearchString('for')||'英雄')
-                    setTimeout(function(){
-                      var invitation = $('#invitation');
-                      $("#cover").show();
-                      invitation.animate({
-                        'top':'50%'
-                      },function(){
-                        var card = document.getElementById('card');
-                        // html2canvas(invitation[0], {
-                        //   onrendered: function(canvas) {
-                        //       var image = new Image();
-                        //       image.src = canvas.toDataURL("image/png");
-                        //       card.appendChild(image);
-                        //   },
-                        //   width: invitation.width()*2,
-                        //   height: invitation.height()*2,
-                        //   allowTaint: true,
-                        //   taintTest: false
-                        // });
-                      });
-                      
-                    },1000)
+        $(window).resize(function(){
+            var windowWidth=$(window).innerWidth();
+            var windowHeight=$(window).innerHeight();
+            $('#video').css({
+                width:windowWidth,
+                height:windowHeight
+            })
+        }) 
+        try{
+          document.getElementById('loading-mp3').play();
+          document.getElementById('video').play()
+          document.getElementById('video').pause();
+          document.getElementById('loop-mp3').play();
+          document.getElementById('loop-mp3').pause();
+        }catch(e){
+
+        }
+        
+
+      $('.countdown').each(function()
+      {
+          $(this).data('from',0);
+          $(this).data('to',100);
+          $(this).countTo({
+            onComplete:function(){
+              $('.countdown').remove();
+              $('#loading').append('<div class="button"></button>');
+              var video = document.getElementById('video');
+              video.onended = function(){
+                $('#card').show();
+                $('video').remove();
+                $('#gif').show();
+                document.getElementById('loop-mp3').play();
+                $('#dowebok').fullpage({
+                  onLeave:function(index,nextIndex){
+                    if(!window.__rendered&&nextIndex==2){
+                      window.__rendered = true;
+                      $('#name').text(getSearchString('for'))
+                      setTimeout(function(){
+                        var invitation = $('#invitation');
+                        $("#cover").show();
+                        invitation.show().animate({
+                          'top':'50%'
+                        },function(){
+                          var card = document.getElementById('card');
+                          // html2canvas(invitation[0], {
+                          //   onrendered: function(canvas) {
+                          //       var image = new Image();
+                          //       image.src = canvas.toDataURL("image/png");
+                          //       card.appendChild(image);
+                          //   },
+                          //   width: invitation.width()*2,
+                          //   height: invitation.height()*2,
+                          //   allowTaint: true,
+                          //   taintTest: false
+                          // });
+                        });
+                        
+                      },1000)
+                    }
                   }
-                }
-              });
+                });
+              }
+              removeLoading();
+              video.play();
             }
-            removeLoading();
-            video.play();
-          }
-        });
-    });
+          });
+      });
+      }); 
   }
 </script>
 
