@@ -26,6 +26,7 @@ app.use(app.router);
 app.get('/', routes.index);
 
 app.get('/admin', routes.admin);
+app.get('/test', routes.test);
 app.get('/MP_verify_LSPXNggdwg6NAn0e.txt', routes.text);
 app.get('/MP_verify_MneiRleI4VNAXLk1.txt', routes.text2);
 

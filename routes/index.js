@@ -8,6 +8,10 @@ exports.admin = function(req, res){
   res.render('admin', { title: '51h5' });
 };
 
+exports.test = function(req, res){
+  res.render('test', { title: '51h5' });
+};
+
 
 
 exports.text = function(req, res){
