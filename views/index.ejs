@@ -185,7 +185,7 @@
       left: 50%;
       margin-left: -50px;
       margin-top: -15px;
-      font-size: 20px;
+      font-size: 17px;
       color:#131021;
       text-align: center;
       font-family: "Georgia";
@@ -312,9 +312,9 @@
                   
                 </div>
             </div>
-            <div id="bt">
+            <!-- <div id="bt">
 
-            </div>
+            </div> -->
             <div id="cover"></div>
         </div>
     </div>
@@ -386,17 +386,17 @@ function removeLoading(){
                           'top':'50%'
                         },function(){
                           var card = document.getElementById('card');
-                          html2canvas(invitation[0], {
-                            onrendered: function(canvas) {
-                                var image = new Image();
-                                image.src = canvas.toDataURL("image/png");
-                                card.appendChild(image);
-                            },
-                            width: invitation.width()*2,
-                            height: invitation.height()*2,
-                            allowTaint: true,
-                            taintTest: false
-                          });
+                          // html2canvas(invitation[0], {
+                          //   onrendered: function(canvas) {
+                          //       var image = new Image();
+                          //       image.src = canvas.toDataURL("image/png");
+                          //       card.appendChild(image);
+                          //   },
+                          //   width: invitation.width()*2,
+                          //   height: invitation.height()*2,
+                          //   allowTaint: true,
+                          //   taintTest: false
+                          // });
                         });
                         
                       },1000)
@@ -446,17 +446,17 @@ function removeLoading(){
                         'top':'50%'
                       },function(){
                         var card = document.getElementById('card');
-                        html2canvas(invitation[0], {
-                          onrendered: function(canvas) {
-                              var image = new Image();
-                              image.src = canvas.toDataURL("image/png");
-                              card.appendChild(image);
-                          },
-                          width: invitation.width()*2,
-                          height: invitation.height()*2,
-                          allowTaint: true,
-                          taintTest: false
-                        });
+                        // html2canvas(invitation[0], {
+                        //   onrendered: function(canvas) {
+                        //       var image = new Image();
+                        //       image.src = canvas.toDataURL("image/png");
+                        //       card.appendChild(image);
+                        //   },
+                        //   width: invitation.width()*2,
+                        //   height: invitation.height()*2,
+                        //   allowTaint: true,
+                        //   taintTest: false
+                        // });
                       });
                       
                     },1000)
@@ -472,6 +472,6 @@ function removeLoading(){
   }
 </script>
 
-  <script type="text/javascript" src="http://51wzn.oss-cn-beijing.aliyuncs.com/html2canvas.js"></script>
+  <!-- <script type="text/javascript" src="http://51wzn.oss-cn-beijing.aliyuncs.com/html2canvas.js"></script> -->
 </body>
 </html>
