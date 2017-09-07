@@ -182,16 +182,8 @@
       z-index: 10;
       background: #ffc515;
     }
-    #loading img{
-      position: absolute;
-      height: 100px;
-      width: 100px;
-      top: 50%;
-      left: 50%;
-      margin-left: -50px;
-      margin-top: -80px;
-    }
-    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) {
+    
+  
     #loading img{
       position: absolute;
       height: 50px;
@@ -201,13 +193,13 @@
       margin-left: -25px;
       margin-top: -80px;
     }
-}
+
 
     #loading .countdown{
       position: absolute;
       height: 100px;
       width: 100px;
-      top: 50%;
+      top: 51%;
       left: 50%;
       margin-left: -50px;
       margin-top: -15px;
@@ -486,7 +478,7 @@ function removeLoading(){
           $(this).data('from',0);
           $(this).data('to',100);
           $(this).countTo({
-            onComplete:function(){
+            onComplete:function(){return ;
               $('.countdown').remove();
               $('#loading').append('<div class="button"></button>');
               var video = document.getElementById('video');
