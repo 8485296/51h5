@@ -360,7 +360,14 @@
         </div>
     </div>
 <script>
-
+function _IsAndroid() {
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.match(/Android/i) == "android") {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 function isWeiXin(){ 
   var ua = window.navigator.userAgent.toLowerCase(); 
@@ -405,8 +412,6 @@ function removeLoading(){
           $(this).data('to',100);
           $(this).countTo({
             onComplete:function(){
-              $('.countdown').remove();
-              $('#loading').append('<div class="button"></button>');
               var video = document.getElementById('video');
               video.onended = function(){
                 $('#card').show();
@@ -425,17 +430,6 @@ function removeLoading(){
                           'top':'50%'
                         },function(){
                           var card = document.getElementById('card');
-                          // html2canvas(invitation[0], {
-                          //   onrendered: function(canvas) {
-                          //       var image = new Image();
-                          //       image.src = canvas.toDataURL("image/png");
-                          //       card.appendChild(image);
-                          //   },
-                          //   width: invitation.width()*2,
-                          //   height: invitation.height()*2,
-                          //   allowTaint: true,
-                          //   taintTest: false
-                          // });
                         });
                         
                       },1000)
@@ -443,6 +437,17 @@ function removeLoading(){
                   }
                 });
               }
+              if(_IsAndroid()){
+                $('#loading').append('<div class="button"></button>');
+
+                $('.button').click(function(){
+                  $('.countdown').remove();
+                  removeLoading();
+                  video.play();
+                })
+                return;
+              }
+              $('.countdown').remove();
               removeLoading();
               video.play();
             }
