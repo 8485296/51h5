@@ -169,9 +169,6 @@
       width: 100%;
       overflow: hidden;
     }
-    body{
-      position: relative;
-    }
     #video,#loading,#gif{
       position: absolute;
       top: 0;
@@ -231,7 +228,7 @@
       display: none;
     }
     #gif img{
-      height: auto;
+      height: 100%;
       width: 100%;
     }
     
@@ -481,7 +478,7 @@ function removeLoading(){
           $(this).data('from',0);
           $(this).data('to',100);
           $(this).countTo({
-            onComplete:function(){return ;
+            onComplete:function(){
               $('.countdown').remove();
               $('#loading').append('<div class="button"></button>');
               var video = document.getElementById('video');
